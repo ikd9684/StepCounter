@@ -25,14 +25,14 @@ public class StepCounterSample {
         System.out.println(INDENT + file);
 
         try {
-            // ƒRƒƒ“ƒg
+            // ã‚³ãƒ¡ãƒ³ãƒˆ
             Source source = JavaSource.count(file, JavaSource.class);
             System.out.println("result:");
-            System.out.println(INDENT + source); //  s––ƒRƒƒ“ƒg@¦‚±‚ê‚Í Statement ‚Æ‚µ‚Äˆµ‚¤
+            System.out.println(INDENT + source); //  è¡Œæœ«ã‚³ãƒ¡ãƒ³ãƒˆã€€â€»ã“ã‚Œã¯ Statement ã¨ã—ã¦æ‰±ã†
         }
         catch(FileNotFoundException e){
             System.err.println("error:");
-            System.err.println(INDENT + "w’è‚³‚ê‚½ƒtƒ@ƒCƒ‹‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñ‚Å‚µ‚½B");
+            System.err.println(INDENT + "æŒ‡å®šã•ã‚ŒãŸãƒ•ã‚¡ã‚¤ãƒ«ãŒè¦‹ã¤ã‹ã‚Šã¾ã›ã‚“ã§ã—ãŸã€‚");
         }
         catch (IOException e){
             e.printStackTrace();

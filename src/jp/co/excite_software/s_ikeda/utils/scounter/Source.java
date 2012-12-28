@@ -8,17 +8,17 @@ import java.io.IOException;
 
 abstract public class Source {
 
-    /** ƒtƒ@ƒCƒ‹–¼ */
+    /** ãƒ•ã‚¡ã‚¤ãƒ«å */
     private  String  fileName;
-    /** ƒtƒ‹ƒpƒX–¼ */
+    /** ãƒ•ãƒ«ãƒ‘ã‚¹å */
     private String pathName;
-    /** Às”  */
+    /** å®Ÿè¡Œæ•°  */
     private int statement;
-    /** ƒRƒƒ“ƒgs” */
+    /** ã‚³ãƒ¡ãƒ³ãƒˆè¡Œæ•° */
     private int comment;
-    /** ‹ós” */
+    /** ç©ºè¡Œæ•° */
     private int blank;
-    /** •s–¾s” */
+    /** ä¸æ˜è¡Œæ•° */
     private int unknown;
     
     abstract public String getFileTypeName();
@@ -50,38 +50,38 @@ abstract public class Source {
     public static Source count(File file, Class<?> clazz)
         throws FileNotFoundException, IOException, InstantiationException, IllegalAccessException {
 
-    Source source = (Source) clazz.newInstance();
+        Source source = (Source) clazz.newInstance();
 
-    source.fileName = file.getName();
-    source.pathName = file.getCanonicalPath();
-    source.statement = 0;
-    source.comment = 0;
-    source.blank = 0;
-    source.unknown = 0;
-    
-    FileReader fr = null;
-    BufferedReader br = null;
-    try {
-        fr = new FileReader(file);
-        br = new BufferedReader(fr);
+        source.fileName = file.getName();
+        source.pathName = file.getCanonicalPath();
+        source.statement = 0;
+        source.comment = 0;
+        source.blank = 0;
+        source.unknown = 0;
 
-        String line = null;
-        while((line = br.readLine()) != null){
-
-            source.count(line);
-        }
-    }
-    finally {
+        FileReader fr = null;
+        BufferedReader br = null;
         try {
-            if (br != null) br.close();
-            if (fr != null) fr.close();
+            fr = new FileReader(file);
+            br = new BufferedReader(fr);
+
+            String line = null;
+            while((line = br.readLine()) != null){
+
+                source.count(line);
+            }
         }
-        catch (IOException e){
-            // through
+        finally {
+            try {
+                if (br != null) br.close();
+                if (fr != null) fr.close();
+            }
+            catch (IOException e){
+                // through
+            }
         }
+        return source;
     }
-    return source;
-}
 
     public String getPathName() {
         return this.pathName;
